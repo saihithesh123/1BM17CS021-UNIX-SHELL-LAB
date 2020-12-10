@@ -1,19 +1,26 @@
-if [$#-ne2]
-then
-echo"pass 2 arguments"
-exit
+if [ $# -eq 0 ]
+then 
+	echo " Please do provide the filenames is argument : "
+else 
+	if [ -f $1 ] && [ -f $2 ] && [ $# -eq 2 ] 
+	then 
+		echo "Both the files exist in directory " 
+		p1=`ls -l $1 | cut -d " " -f 1`
+		p2=`ls -l $2 | cut -d " " -f 1`
+		case $p1 in 
+			$p2)
+				echo "Both the file permission is same : $p1"
+				;;
+			*)
+				echo "File permission are not same "
+				echo " $1 : $p1"
+				echo " $2 : $p2"
+				;;
+			esac
+	else 
+		echo "Please do enter the valid arguments " 
+	fi
 fi
-echo"enter the file name"
-read f1
-echo"enter the second file name"
-read f2
-p1=`ls-1 $f1|cut-c2-10`
-p2=`ls-1 $f2|cut-cs-10`
-if[$p1=$p2]
-then
-echo"File permissions are equal and it is $p1"
-else
-echo"File permission are not equal"
-echo"1st file $f1 permission is $p1"
-echo"2nd file $f2 permission is $p2"
-fi
+echo " Thank you "
+
+		
